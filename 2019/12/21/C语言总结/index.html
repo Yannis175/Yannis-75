@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Yannis">
+
+
+    <meta name="subtitle" content="吼吼吼˙Ⱉ˙ฅ ​​​">
+
+
+
+
+<title>C语言总结 | Yannis&#39;s Blog.</title>
+
+
+
+    <link rel="icon" href="https://img-blog.csdnimg.cn/20200105163142421.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lhbm5pczc1,size_16,color_FFFFFF,t_70">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Yannis&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Yannis&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">C语言总结</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Yannis</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">December 21, 2019&nbsp;&nbsp;18:28:04</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h4 id="1-getchar-函数"><a href="#1-getchar-函数" class="headerlink" title="1.getchar()函数"></a>1.getchar()函数</h4><p>getchar函数的功能是接收用户从键盘上输入的一个字符。其一般调用形式为：<br>getchar();<br>getchar会以返回值的形式返回接收到的字符.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">char</span> c;  <span class="comment">/*定义字符变量c*/</span></span><br><span class="line">c=getchar(); <span class="comment">/*将读取的字符赋值给字符变量c*/</span></span><br></pre></td></tr></table></figure>
+
+<p>getchar()函数执行一次会从键盘缓冲区(如果有内容就读取，没有内容就等待用户输入并以回车结束，回车相当于加上一个换行符\n)顺序读取一个字符并返回此ASCII码。</p>
+<p>scanf()在读取输入时会在缓冲区中留下一个字符’\n’。getchar()是在输入缓冲区顺序读入一个字符(包括空格、回车和Tab)</p>
+<p>回车键顶替了输入字符的第一个字符，如果不添加getchar()；就会输出错误。</p>
+<p>例题：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> a;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Input a lowercase letter:"</span>);</span><br><span class="line">    a=getchar();</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c(%d)\n"</span>,a,a);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%c(%d)"</span>,a<span class="number">-32</span>,a<span class="number">-32</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Tips:</strong></p>
+<p>ASCII码中：大写字母+32=小写字母。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">char</span> ch;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"Input a lowercase letter:"</span>);</span><br><span class="line">ch = getchar();</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c(%d)\n"</span>, ch, ch);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%c(%d)\n"</span>, ch - <span class="number">32</span>, ch - <span class="number">32</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="2-puts-函数"><a href="#2-puts-函数" class="headerlink" title="2.puts()函数"></a>2.puts()函数</h4><p><strong>在输出字符串时</strong>都使用printf，通过“%s”输出字符串。其实还有更简单的方法，就是使用 puts() 函数。使用 puts() 显示字符串时，系统会自动在其后添加一个换行符。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">"%s\n"</span>, name);</span><br><span class="line">\*等价于*\</span><br><span class="line"><span class="built_in">puts</span>(name);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-8d-8d"><a href="#3-8d-8d" class="headerlink" title="3.%8d %-8d"></a>3.%8d %-8d</h4><p>%8d表示显示长度最小为8个字符，不足的话左边补空格，比如 123456，显示的是“空格空格123456”。</p>
+<p>%-8d表示显示长度最小为8个字符，不足的话右边补空格，比如 123456，显示的是“123456空格空格”。</p>
+<h4 id="4-常用占位符"><a href="#4-常用占位符" class="headerlink" title="4.常用占位符"></a>4.常用占位符</h4><table>
+<thead>
+<tr>
+<th align="center">int</th>
+<th align="center">%d</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">char</td>
+<td align="center">%c</td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">%lf</td>
+</tr>
+<tr>
+<td align="center">float</td>
+<td align="center">%f</td>
+</tr>
+<tr>
+<td align="center">使用十六进制数字0f的无符号十六进制整数</td>
+<td align="center">%x</td>
+</tr>
+<tr>
+<td align="center">使用十六进制数字0F的无符号十六进制整数</td>
+<td align="center">%X</td>
+</tr>
+<tr>
+<td align="center">字符串</td>
+<td align="center">%s</td>
+</tr>
+</tbody></table>
+<h4 id="5-If判断用双等于“-”（为什么总记不住！！！-）"><a href="#5-If判断用双等于“-”（为什么总记不住！！！-）" class="headerlink" title="5.If判断用双等于“==”（为什么总记不住！！！= ^ =）"></a>5.If判断用双等于“==”（为什么总记不住！！！= ^ =）</h4><h4 id="6-打印图形问题"><a href="#6-打印图形问题" class="headerlink" title="6.打印图形问题"></a>6.打印图形问题</h4><p>Method：</p>
+<p>用两层循环</p>
+<p>外层循环 控制行（行数、换行）</p>
+<p>​    内层循环 控制列（ 列数、列的符号 ）</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//左下三角形</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,i,j;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input n:"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=i;j++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"@"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/%E4%B8%8B%E4%B8%89%E8%A7%92%E5%BD%A2.png" alt="打印左下三角形"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//左上三角形</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,i,j;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input n:"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=n;j&gt;i;j--)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"@"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/%E4%B8%8A%E4%B8%89%E8%A7%92%E5%BD%A2.png" alt="打印左上三角形"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//右上三角形</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,i,j;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input n:"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">for</span>(j=n;j&gt;i;j--)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"@"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/%E5%8F%B3%E4%B8%8A%E4%B8%89%E8%A7%92%E5%BD%A2.png" alt="打印右上三角形"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//右下三角形</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,i,j;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input n:"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=n;j&gt;i;j--)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=i;j++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"@"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/%E5%8F%B3%E4%B8%8B%E4%B8%89%E8%A7%92%E5%BD%A2.png" alt="打印右下三角形"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//下等边三角形</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,i,j;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input n:"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=n;j&gt;i;j--)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=i;j++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">" @"</span>);</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/%E4%B8%8B%E7%AD%89%E8%BE%B9%E4%B8%89%E8%A7%92%E5%BD%A2.png" alt="打印下等边三角形"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//奇奇怪怪三角形</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,i,j,k;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input n:"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i=i+<span class="number">2</span>)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;=i;j++)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"@ "</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i=i+<span class="number">2</span>)&#123;</span><br><span class="line">       <span class="keyword">for</span>(k=n;k&gt;i;k--)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"@ "</span>);</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/%E5%A5%87%E5%A5%87%E6%80%AA%E6%80%AA%E4%B8%89%E8%A7%92%E5%BD%A2.png" alt="打印奇奇怪怪三角形"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//上正三角形</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n,i,j;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Please input n:"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">0</span>;j&lt;i;j++)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">for</span>(j=n;j&gt;i;j--)&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"@ "</span>);</span><br><span class="line">       &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/%E4%B8%8A%E6%AD%A3%E4%B8%89%E8%A7%92%E5%BD%A2.png" alt="打印上正三角形"></p>
+<h4 id="7-打印X"><a href="#7-打印X" class="headerlink" title="7.打印X"></a>7.打印X</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">int</span> i, j, n;</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"Please input n: "</span>);</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line"></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n; i++)</span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt; i; j++)</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">if</span> (i == n)</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">"@\n"</span>);</span><br><span class="line">  <span class="keyword">continue</span>;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"@"</span>);</span><br><span class="line"> <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= <span class="number">2</span> * (n - i) - <span class="number">1</span>; j++)</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"@"</span>);</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= n - <span class="number">1</span> ; i++)</span><br><span class="line">&#123;</span><br><span class="line"> <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt; n - i; j++)</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"@"</span>);</span><br><span class="line"> <span class="keyword">for</span> (j = <span class="number">1</span>; j &lt;= <span class="number">2</span> * i - <span class="number">1</span>; j++)</span><br><span class="line"> &#123;</span><br><span class="line">  <span class="built_in">printf</span>(<span class="string">" "</span>);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"@"</span>);</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="8-四舍五入"><a href="#8-四舍五入" class="headerlink" title="8.四舍五入"></a>8.四舍五入</h4><p>输入：数字双精度num和n。  num是被四舍五入的数，n是保留的小数位数(n&gt;=0)输出：保留的结果</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">double</span> num;</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"Please input num and n: \n"</span>);</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">"%lf,%d"</span>,&amp;num,&amp;n);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%.*f\n"</span>,n,num);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里用到了%<em>.</em>f的表达，其中<em>.</em>是printf函数的格式附加字符。*表示不确定的变量，可以用变量的值代替。</p>
+<p>这里是制定宽度的数值的输出，如果制定宽度值为*号，参数列表中需要用一个整型参数值提供。</p>
+<h4 id="9-while-c-getchar-’-n’"><a href="#9-while-c-getchar-’-n’" class="headerlink" title="9.while((c=getchar())!=’\n’)"></a>9.while((c=getchar())!=’\n’)</h4><p>意思是：一直循环，等到用户输入回车为止，结束循环。</p>
+<h4 id="10-最大公约数-最小公倍数——辗转相除法"><a href="#10-最大公约数-最小公倍数——辗转相除法" class="headerlink" title="10.最大公约数 最小公倍数——辗转相除法"></a>10.最大公约数 最小公倍数——辗转相除法</h4><blockquote>
+<p>假如需要求 1997 和 615 两个正整数的最大公约数,用欧几里德算法，是这样进行的：</p>
+<p>1997 / 615 = 3 (余 152)</p>
+<p>615 / 152 = 4(余7)</p>
+<p>152 / 7 = 21(余5)</p>
+<p>7 / 5 = 1 (余2)</p>
+<p>5 / 2 = 2 (余1)</p>
+<p>2 / <strong>1</strong> = 2 (余0)</p>
+<p>至此，最大公约数为1</p>
+<p>以除数和余数反复做除法运算，当余数为 0 时，取当前算式除数为最大公约数，所以就得出了 1997 和 615 的最大公约数 1。</p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> m=<span class="number">0</span>,n=<span class="number">0</span>,t=<span class="number">0</span>,r=<span class="number">0</span>,p=<span class="number">0</span>;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"n,m:"</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d,%d"</span>,&amp;n,&amp;m);</span><br><span class="line">    <span class="keyword">if</span>(n&lt;m)&#123;</span><br><span class="line">        t=n;</span><br><span class="line">        n=m;</span><br><span class="line">        m=t;</span><br><span class="line">    &#125;</span><br><span class="line">    p=n*m;</span><br><span class="line">    <span class="keyword">while</span>(m!=<span class="number">0</span>)&#123;</span><br><span class="line">        r=n%m;</span><br><span class="line">        n=m;</span><br><span class="line">        m=r;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"zuidagongyueshu:%d\n"</span>,n);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"zuixiaogongbeishu:%d"</span>,p/n);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="11-绝对值-abs"><a href="#11-绝对值-abs" class="headerlink" title="11.绝对值 abs()"></a>11.绝对值 abs()</h4><h4 id="12-’-0’是判定字符数组结束的标识，表示这串字符到结尾了；"><a href="#12-’-0’是判定字符数组结束的标识，表示这串字符到结尾了；" class="headerlink" title="12.’\0’是判定字符数组结束的标识，表示这串字符到结尾了；"></a>12.’\0’是判定字符数组结束的标识，表示这串字符到结尾了；</h4><h4 id="13-while-x-amp-amp-y-等价于while-x-0-amp-amp-y-0"><a href="#13-while-x-amp-amp-y-等价于while-x-0-amp-amp-y-0" class="headerlink" title="13.while(*x&amp;&amp;y)等价于while(x!=0&amp;&amp;*y!=0)"></a>13.<em>while(*x</em>&amp;&amp;<em>y)等价于<em>while(</em>x!=0</em>&amp;&amp;*y!=0)</h4><h4 id="14-ceil-函数：向上取整"><a href="#14-ceil-函数：向上取整" class="headerlink" title="14.ceil() 函数：向上取整"></a>14.ceil() 函数：向上取整</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"> <span class="keyword">double</span> v,d,s;</span><br><span class="line"> <span class="keyword">int</span> i,t;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"Please input the VUL and d: "</span>);</span><br><span class="line"> <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;v,&amp;d);</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"Output:\n"</span>);</span><br><span class="line"> <span class="keyword">while</span>(v!=<span class="number">0</span>&amp;&amp;d!=<span class="number">0</span>)</span><br><span class="line"> &#123;</span><br><span class="line"> s=v/d;</span><br><span class="line"> t=<span class="built_in">ceil</span>(v/d);</span><br><span class="line"> <span class="keyword">for</span>(i=<span class="number">1</span>;;i++)</span><br><span class="line"> &#123;</span><br><span class="line"> s-=i;</span><br><span class="line"> <span class="keyword">if</span>(s&lt;=<span class="number">0</span>)</span><br><span class="line"> <span class="keyword">break</span>;</span><br><span class="line"> t++;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,t);</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"continue input: "</span>);</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;v,&amp;d);</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Yannis</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2019/12/21/C%E8%AF%AD%E8%A8%80%E6%80%BB%E7%BB%93/">http://yoursite.com/2019/12/21/C%E8%AF%AD%E8%A8%80%E6%80%BB%E7%BB%93/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>生活就是这样一半惊喜，一半遗憾。</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/C%E8%AF%AD%E8%A8%80/"># C语言</a>
+                    
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"># 学习笔记</a>
+                    
+                        <a href="/tags/%E5%A4%A7%E4%B8%80/"># 大一</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();" target="_blank" rel="noopener">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/01/18/wechat%E5%B0%8F%E7%A8%8B%E5%BA%8F/">微信小程序开发</a>
+            
+            
+            <a class="next" rel="next" href="/2019/12/18/%E6%B1%89%E8%AF%BA%E5%A1%94/">hanio</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+    <div id="gitalk-container"></div>
+    <script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '23c1033ea835ac959d8a',
+        clientSecret: '62231592690a47c06708abd3b26865d9206769a7',
+        repo: 'blog',
+        owner: 'Yannis175',
+        admin: 'Yannis175',
+        id: md5(&lt;%= theme.gitalk.ID %&gt;),,
+        labels: 'Gitalk'.split(',').filter(l => l),
+        perPage: 10,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+      gitalk.render('gitalk-container')
+</script>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Yannis | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+          </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

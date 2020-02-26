@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Yannis">
+
+
+    <meta name="subtitle" content="吼吼吼˙Ⱉ˙ฅ ​​​">
+
+
+
+
+<title>指针（1） | Yannis&#39;s Blog.</title>
+
+
+
+    <link rel="icon" href="https://img-blog.csdnimg.cn/20200105163142421.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lhbm5pczc1,size_16,color_FFFFFF,t_70">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Yannis&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Yannis&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">指针（1）</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Yannis</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">November 11, 2019&nbsp;&nbsp;13:40:56</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/C%E8%AF%AD%E8%A8%80/">C语言</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p><strong>前言：</strong>吼吼吼！终于学到了第八章得“指针”了！！</p>
+<h4 id="˙Ⱉ˙ฅ-种种定义"><a href="#˙Ⱉ˙ฅ-种种定义" class="headerlink" title="˙Ⱉ˙ฅ 种种定义"></a>˙Ⱉ˙ฅ 种种定义</h4><p>如果在程序中定义了一个变量，在对程序进行编译时，系统就会给这个变量分配内存单元。编译系统根据程序中定义的变量类型，分配一定长度的空间。内存区的每一个字节有一个编号，这就是“<strong>地址</strong>”。</p>
+<p>由于通过地址能找到所需的变量单元，可以说，<strong>地址指向该变量单元</strong>，将<strong>地址形象化地称为“指针”</strong>。</p>
+<p>C语言中的地址包括位置信息(内存编号，或称纯地址)和它所指向的数据的类型信息，或者说它是“带类型的地址”。</p>
+<p>存储单元的地址和存储单元的内容是两个不同的概念。</p>
+<p>在程序中一般是通过变量名来引用变量的值。</p>
+<p>直接按变量名进行的访问，称为“<strong>直接访问</strong>”方式。还可以采用另一种称为</p>
+<p>“<strong>间接访问</strong>”的方式，即将变量的地址存放在另一变量（<strong>指针变量</strong>）中，</p>
+<p>然后通过该指针变量来找到对应变量的地址，从而访问变量。</p>
+<p><strong>指针</strong>是一个变量，其值为另一个变量的地址，即，内存位置的直接地址。就像其他变量或常量一样，您必须在使用指针存储其他变量地址之前，对其进行声明。</p>
+<p>指针变量声明的一般形式为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">type(类型名)*var-name（指针变量名）;</span><br><span class="line"><span class="comment">//type 是指针的基类型（必须是一个有效的 C 数据类型）；var-name 是指针变量的名称。</span></span><br></pre></td></tr></table></figure>
+
+<p>用来声明指针的星号 * 与乘法中使用的星号是相同的。但是，在这个语句中，星号是用来指定一个变量是指针。以下是有效的指针声明：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>    *ip;    <span class="comment">/* 一个整型的指针 */</span></span><br><span class="line"><span class="keyword">double</span> *dp;    <span class="comment">/* 一个 double 型的指针 */</span></span><br><span class="line"><span class="keyword">float</span>  *fp;    <span class="comment">/* 一个浮点型的指针 */</span></span><br><span class="line"><span class="keyword">char</span>   *ch;     <span class="comment">/* 一个字符型的指针 */</span></span><br></pre></td></tr></table></figure>
+
+<p>左端的int是在定义指针变量时必须指定的“<strong>基类型</strong>”。指针变量的基类型用来指定此指针变量可以指向的变量的类型。</p>
+<p>前面介绍过基本的数据类型(如int,char，float等)，既然有这些类型的变量，就可以有指向这些类型变量的指针，因此，指针变量是基本数据类型派生出来的类型，它不能离开基本类型而独立存在。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">在定义指针变量时要注: </span><br><span class="line">(<span class="number">1</span>) 指针变量前面的“*”表示该变量为指针型变量。指针变量名则不包含“*”。</span><br><span class="line">(<span class="number">2</span>) 在定义指针变量时必须指定基类型。一个变量的指针的含义包括两个方面，一是以存储单元编号表示的纯地址（如编号为<span class="number">2000</span>的字节），一是它指向的存储单元的数据类型（如<span class="keyword">int</span>,<span class="keyword">char</span>,<span class="keyword">float</span>等）。</span><br><span class="line">(<span class="number">3</span>) 如何表示指针类型指向整型数据的指针类型表示为“<span class="keyword">int</span>*”，读作“指向<span class="keyword">int</span>的指针”或简称“<span class="keyword">int</span>指针”。</span><br><span class="line">(<span class="number">4</span>) 指针变量中只能存放地址（指针），不要将一个整数赋给一个指针变量。</span><br></pre></td></tr></table></figure>
+
+<h6 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a><strong>Tips:</strong></h6><p>所有实际数据类型，不管是整型、浮点型、字符型，还是其他的数据类型，对应指针的值的类型都是一样的，都是一个代表内存地址的长的十六进制数。<br>不同数据类型的指针之间唯一的不同是，指针所指向的变量或常量的数据类型不同。</p>
+<h4 id="˙Ⱉ˙ฅ-怎样引用指针变量"><a href="#˙Ⱉ˙ฅ-怎样引用指针变量" class="headerlink" title="˙Ⱉ˙ฅ 怎样引用指针变量"></a>˙Ⱉ˙ฅ 怎样引用指针变量</h4><p>① 给指针变量赋值。</p>
+<p>② 引用指针变量指向的变量。</p>
+<p>③引用指针变量的值。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a, *p;</span><br><span class="line">p=&amp;a;				<span class="comment">//把a的地址赋给指针变量p											</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>,*p);		<span class="comment">//以整数形式输出指针变量p所指向的变量的值，即a的值					</span></span><br><span class="line">*p=<span class="number">1</span>;				<span class="comment">//将整数1赋给p当前所指向的变量，由于p指向变量a，相当于把1赋给a，即a=1	</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"%o"</span>,p);		<span class="comment">//以八进制形式输出指针变量p的值，由于p指向a，相当于输出a的地址，即&amp;a	③</span></span><br></pre></td></tr></table></figure>
+
+<h6 id="Tips-1"><a href="#Tips-1" class="headerlink" title="Tips:"></a><strong>Tips:</strong></h6><p>要熟练掌握两个有关的运算符：</p>
+<p>(1) <strong>＆</strong>取地址运算符。&amp;a是变量a的地址。</p>
+<p>(2) ***** 指针运算符（或称“间接访问”运算符），*p代表指针变量p指向的对象。</p>
+<h4 id="˙Ⱉ˙ฅ-使用指针变量的例子"><a href="#˙Ⱉ˙ฅ-使用指针变量的例子" class="headerlink" title="˙Ⱉ˙ฅ 使用指针变量的例子"></a>˙Ⱉ˙ฅ 使用指针变量的例子</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*[eg1]:通过指针变量访问整型变量。*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> a=<span class="number">100</span>,b=<span class="number">10</span>;</span><br><span class="line">	<span class="comment">//定义整型变量a,b，并初始化</span></span><br><span class="line">	<span class="keyword">int</span> *pointer_1,*pointer_2;</span><br><span class="line">	<span class="comment">//定义指向整型数据的指针变量pointer_1, pointer_2</span></span><br><span class="line">	pointer_1=&amp;a;	<span class="comment">//把变量a的地址赋给指针变量pointer_1</span></span><br><span class="line">	pointer_2=&amp;b;	<span class="comment">//把变量b的地址赋给指针变量pointer_2 </span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"a=%d,b=%d\n"</span>,a,b);	<span class="comment">//输出变量a和b的值</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"*pointer_1=%d,*pointer_2=%d\n"</span>,*pointer_1,*pointer_2);</span><br><span class="line">	<span class="comment">//输出变量a和b的值</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*怎样引用指针变量</span></span><br><span class="line"><span class="comment">[eg2]:输入a和b两个整数，按先大后小的顺序输出a和b。</span></span><br><span class="line"><span class="comment">解题思路:不交换整型变量的值，而是交换两个指针变量的值（即a和b的地址）。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> *p1,*p2,*p,a,b;					<span class="comment">//p1,p2的类型是int *类型</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"please enter two integer numbers:"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d,%d"</span>,&amp;a,&amp;b);				<span class="comment">//输入两个整数 </span></span><br><span class="line">	p1=&amp;a;							<span class="comment">//使p1指向变量a</span></span><br><span class="line">	p2=&amp;b;							<span class="comment">//使p2指向变量b</span></span><br><span class="line">	<span class="keyword">if</span>(a&lt;b)							<span class="comment">//如果a&lt;b</span></span><br><span class="line">	&#123;	p=p1;p1=p2;p2=p;&#125;			<span class="comment">//使p1与p2的值互换</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"a=%d,b=%d\n"</span>,a,b);			<span class="comment">//输出a,b</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"max=%d,min=%d\n"</span>,*p1,*p2);	<span class="comment">//输出p1和p2所指向的变量的值</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*Tips:</span></span><br><span class="line"><span class="comment">a和b的值并未交换，它们仍保持原值，但p1和p2的值改变了。</span></span><br><span class="line"><span class="comment">实际上，第9行可以改为&#123;p1=&amp;b; p2=&amp;a;&#125;即直接对p1和p2赋以新值，这样可以不必定义中间变量p，使程序更加简练。</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*指针变量作为函数参数</span></span><br><span class="line"><span class="comment">[eg3]:题目要求同例8.2，即对输入的两个整数按大小顺序输出。现用函数处理，而且用指针类型的数据作函数参数。*/</span></span><br><span class="line"><span class="comment">//Methods1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *,<span class="keyword">int</span> *p2)</span></span>;	<span class="comment">//对swap函数的声明 </span></span><br><span class="line">	<span class="keyword">int</span> a,b;</span><br><span class="line">	<span class="keyword">int</span> *pointer_1,*pointer_2;	<span class="comment">//定义两个int *型的指针变量</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"please enter a and b:"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d,%d"</span>,&amp;a,&amp;b);		<span class="comment">//输入两个整数</span></span><br><span class="line">	pointer_1=&amp;a;			<span class="comment">//使pointer_1指向a</span></span><br><span class="line">	pointer_2=&amp;b;			<span class="comment">//使pointer_2指向b </span></span><br><span class="line">	<span class="keyword">if</span>(a&lt;b) swap(pointer_1,pointer_2); <span class="comment">//如果a&lt;b，调用swap函数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"max=%d,min=%d\n"</span>,a,b); 	<span class="comment">//输出结果</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *p1,<span class="keyword">int</span> *p2)</span>			<span class="comment">//定义swap函数</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> temp;</span><br><span class="line">	temp=*p1;					<span class="comment">//使*p1和*p2互换</span></span><br><span class="line">	*p1=*p2;</span><br><span class="line">	*p2=temp;</span><br><span class="line">&#125;	<span class="comment">//本例交换a和b的值，而p1和p2的值不变。这恰和例8.2相反</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//Methods2</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *,<span class="keyword">int</span> *)</span></span>;	<span class="comment">//对swap函数的声明 </span></span><br><span class="line">	<span class="keyword">int</span> a,b;</span><br><span class="line">	<span class="comment">//int *pointer_1,*pointer_2;	//定义两个int *型的指针变量</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"please enter a and b:"</span>);</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d,%d"</span>,&amp;a,&amp;b);		<span class="comment">//输入两个整数</span></span><br><span class="line">	<span class="comment">//pointer_1=&amp;a;			//使pointer_1指向a</span></span><br><span class="line">	<span class="comment">//pointer_2=&amp;b;			//使pointer_2指向b </span></span><br><span class="line">	<span class="keyword">if</span>(a&lt;b) swap(&amp;a,&amp;b); <span class="comment">//如果a&lt;b，调用swap函数</span></span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"max=%d,min=%d\n"</span>,a,b); 	<span class="comment">//输出结果</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> *p1,<span class="keyword">int</span> *p2)</span>			<span class="comment">//定义swap函数</span></span></span><br><span class="line"><span class="function"></span>&#123;	<span class="keyword">int</span> temp;</span><br><span class="line">	temp=*p1;					<span class="comment">//使*p1和*p2互换</span></span><br><span class="line">	*p1=*p2;</span><br><span class="line">	*p2=temp;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Yannis</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2019/11/11/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%881/">http://yoursite.com/2019/11/11/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%881/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>生活就是这样一半惊喜，一半遗憾。</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/C%E8%AF%AD%E8%A8%80/"># C语言</a>
+                    
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"># 学习笔记</a>
+                    
+                        <a href="/tags/%E5%A4%A7%E4%B8%80/"># 大一</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();" target="_blank" rel="noopener">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2019/12/01/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88%E5%AE%9E%E4%BE%8B/">指针实例</a>
+            
+            
+            <a class="next" rel="next" href="/2019/11/06/C%E8%AF%AD%E8%A8%80%E5%8A%A8%E6%80%81%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8/">C语言动态库˙Ⱉ˙ฅ</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+    <div id="gitalk-container"></div>
+    <script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '23c1033ea835ac959d8a',
+        clientSecret: '62231592690a47c06708abd3b26865d9206769a7',
+        repo: 'blog',
+        owner: 'Yannis175',
+        admin: 'Yannis175',
+        id: md5(&lt;%= theme.gitalk.ID %&gt;),,
+        labels: 'Gitalk'.split(',').filter(l => l),
+        perPage: 10,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+      gitalk.render('gitalk-container')
+</script>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Yannis | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+          </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
