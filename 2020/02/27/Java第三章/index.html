@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Yannis">
+
+
+    <meta name="subtitle" content="吼吼吼˙Ⱉ˙ฅ ​​​">
+
+
+
+
+<title>Java 第三章 Java类基础知识 | Yannis&#39;s Blog.</title>
+
+
+
+    <link rel="icon" href="https://img-blog.csdnimg.cn/20200105163142421.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lhbm5pczc1,size_16,color_FFFFFF,t_70">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Yannis&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Yannis&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Java 第三章 Java类基础知识</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Yannis</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">February 27, 2020&nbsp;&nbsp;11:47:56</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>今天我们继续Java的快乐学习吧！:muscle:</p>
+<h2 id="第三章-Java类基础知识"><a href="#第三章-Java类基础知识" class="headerlink" title="第三章 Java类基础知识"></a>第三章 Java类基础知识</h2><h3 id="课程安排"><a href="#课程安排" class="headerlink" title="课程安排"></a>课程安排</h3><h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><p>（1）请认真看视频，课堂练习和课后练习都跟视频内容密切相关；</p>
+<p>（2）课堂派上的练习关闭提交后，我会公布练习的答案。</p>
+<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a><strong>流程</strong></h4><ol>
+<li>（13:30开始，共8分钟）MOOC视频 lesson03-02 Java类基础知识–基本类型；</li>
+<li>（13:39开始，共16分钟）MOOC视频lesson03-03 Java类基础知识–选择和循环结构</li>
+<li>（13:56开始，共6分钟）练习 </li>
+<li>（14:03开始，共10分钟）lesson03-04 Java类基础知识–自定义函数 </li>
+<li>（14:18开始，共25分钟）学习“Scanner类的使用”视频，以及补充材料“使用Scanner类获取用户输入的数据”</li>
+</ol>
+<p>计算圆的面积的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Program2_2</span> </span>&#123;	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] a)</span></span>&#123;</span><br><span class="line">        <span class="comment">/*1、创建Scanner类的对象,System.in表示键盘*/</span>					</span><br><span class="line">        Scanner input = <span class="keyword">new</span> Scanner(System.in);		</span><br><span class="line">        <span class="comment">/*2、在控制台输出提示信息，这一句可以省略*/</span>			</span><br><span class="line">        System.out.println(<span class="string">"请输入圆的半径："</span>);		</span><br><span class="line">        <span class="comment">/*3、通过input对象读取用户输入的double类型的数值*/</span>			</span><br><span class="line">        <span class="keyword">double</span> radius = input.nextDouble();		</span><br><span class="line">        <span class="comment">/*5、计算面积*/</span>		</span><br><span class="line">        <span class="keyword">double</span> area = radius * radius * <span class="number">3.14</span>;		</span><br><span class="line">        <span class="comment">/*6、输出半径和面积，注意括号里面的常量和变量数据类型包括字符串、double、char，请看马士兵的关于数据类型转换的视频*/</span>		</span><br><span class="line">        System.out.println(<span class="string">"圆的半径是："</span> + radius + <span class="string">'\n'</span> + <span class="string">"圆的面积是："</span> + area);			&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>6.（14:43开始，共22分钟）课堂练习</p>
+<h3 id="第二节-Java基本类型和运算符"><a href="#第二节-Java基本类型和运算符" class="headerlink" title="第二节 Java基本类型和运算符"></a>第二节 Java基本类型和运算符</h3><h4 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h4><p>• 基本类型/基本型别 </p>
+<p>​    –boolean 布尔 </p>
+<p>​    –byte 字节 </p>
+<p>​    –short/int/long  短整数/整数/长整数 </p>
+<p>​    –float/double     浮点数 </p>
+<p>​    –char                   字符</p>
+<h5 id="布尔类型"><a href="#布尔类型" class="headerlink" title="布尔类型"></a>布尔类型</h5><p><strong>• boolean</strong> </p>
+<p>​    –只有true，或者false两种值，默认是false</p>
+<p>​    –例子：boolean one = true。</p>
+<h5 id="字节类型"><a href="#字节类型" class="headerlink" title="字节类型"></a>字节类型</h5><p><strong>• byte</strong> </p>
+<p>​    –byte 字节， 1 byte = 8 bits (8位) </p>
+<p>​    –存储有符号的，以二进制补码表示的整数 </p>
+<p>​    –<strong>最小值-128，最大值127，默认值0</strong> </p>
+<p>​    –byte 类型用在<strong>大型数组中可以显著节约空间，主 要代替小整数</strong>，因为 byte 变量占用的空间只有 int 类型的四分之一 </p>
+<p>​    –byte在二进制文件读写中使用较多</p>
+<p>​    –例子：byte a = 100，byte b = -50。</p>
+<h5 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h5><p><strong>• short</strong>，16位，2个字节，有符号的以二进制补码表示的整数 </p>
+<p>​    –(-32768<del>32767, -2^15</del>2^15-1)，默认值0 </p>
+<p>​    –例子：short s = 1000，short r = -20000。</p>
+<p><strong>• int</strong>, 32位，4个字节,有符号的以二进制补码表示的整数 </p>
+<p>​    –(-2147483648<del>2147483647, -2^31</del>2^31-1)，默认值0 </p>
+<p>​    –例子：int a = 100000, int b = -200000。</p>
+<p><strong>• long</strong>, 64位，8个字节,有符号的以二进制补码表示的整数 </p>
+<p>​    –9,223,372,036,854,775,808（-2^63）~ 9,223,372,036,854,775,807（2^63 -1），默认值0L</p>
+<p>​    –定义long类型时最好加上大写的L</p>
+<p>​    –例子： long a = 100000L，Long b = -200000L。</p>
+<h5 id="浮点数类型"><a href="#浮点数类型" class="headerlink" title="浮点数类型"></a>浮点数类型</h5><p><strong>• float</strong>，单精度，32位，4个字节，符合IEEE 754标准的浮点 数，默认值0.0f。float的范围为1.40129846432481707e-45 ~ 3.40282346638528860e+38 (无论正负)。 </p>
+<p>​    –例子：float f1 = 234.5f</p>
+<p><strong>• double</strong>，双精度，64位，8个字节，符合IEEE 754标准的浮 点数，默认值0.0d。double的范围为4.94065645841246544e324d ~ 1.79769313486231570e+308d (无论正负) 。 </p>
+<p>​    –例子：double d1 = 123.4。</p>
+<p><strong>• float和double都不能用来表示很精确的数字。</strong></p>
+<h5 id="字符类型"><a href="#字符类型" class="headerlink" title="字符类型"></a>字符类型</h5><p><strong>• char</strong>是一个单一的 16 位 Unicode 字符 </p>
+<p>​    –最小值是 \u0000（即为0） </p>
+<p>​    –最大值是 \uffff（即为65,535） </p>
+<p>​    <strong>–char 数据类型可以储存任何字符</strong></p>
+<p>​    –例子：char letter = ‘A’;。</p>
+<h5 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h5><p>• +，-，*, /, % </p>
+<p>• 逻辑运算符&amp;&amp;, ||, ! </p>
+<p>• 比较运算符 !=, &gt;, &gt;=, &lt;, &lt;=, == </p>
+<p>• 移位运算符&gt;&gt;, &lt;&lt;等 </p>
+<p>• 不用背诵运算符优先级，<strong>用括号隔开</strong></p>
+<h5 id="转义字符序列"><a href="#转义字符序列" class="headerlink" title="转义字符序列"></a>转义字符序列</h5><table>
+<thead>
+<tr>
+<th align="left">符号</th>
+<th align="left">字符含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">\n</td>
+<td align="left">换行 (0x0a)</td>
+</tr>
+<tr>
+<td align="left">\r</td>
+<td align="left">回车 (0x0d)</td>
+</tr>
+<tr>
+<td align="left">\f</td>
+<td align="left">换页符(0x0c)</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">退格 (0x08)</td>
+</tr>
+<tr>
+<td align="left">\0</td>
+<td align="left">空字符 (0x20)</td>
+</tr>
+<tr>
+<td align="left">\s</td>
+<td align="left">字符串</td>
+</tr>
+<tr>
+<td align="left">\t</td>
+<td align="left">制表符</td>
+</tr>
+<tr>
+<td align="left">&quot;</td>
+<td align="left">双引号</td>
+</tr>
+<tr>
+<td align="left">&#39;</td>
+<td align="left">单引号</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">反斜杠</td>
+</tr>
+<tr>
+<td align="left">\ddd</td>
+<td align="left">八进制字符 (ddd)</td>
+</tr>
+<tr>
+<td align="left">\uxxxx</td>
+<td align="left">16进制Unicode字符 (xxxx)</td>
+</tr>
+</tbody></table>
+<h3 id="第三节-选择和循环的结构"><a href="#第三节-选择和循环的结构" class="headerlink" title="第三节 选择和循环的结构"></a>第三节 选择和循环的结构</h3><h4 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h4><p><strong>选择结构</strong>：当满足一定条件后，才执行一部分代码，否则会执行另一部分的代码。</p>
+<p>• if(布尔表达式) 单种case </p>
+<p>• if (布尔表达式) …else    两种case </p>
+<p>• if (布尔) …else if (布尔) …else  可以多种case </p>
+<p> 参看例子IfElseTest.java:point_down:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">IfElseTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">		<span class="keyword">if</span>(a&gt;<span class="number">1</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"aaaaaaa"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(a&gt;<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"bbbbbbb"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"ccccccc"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(a&gt;<span class="number">10</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"dddddd"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(a&gt;=<span class="number">5</span>)</span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"eeeeee"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span></span><br><span class="line">		&#123;</span><br><span class="line">			System.out.println(<span class="string">"ffffff"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多重选择结构"><a href="#多重选择结构" class="headerlink" title="多重选择结构"></a>多重选择结构</h4><p>​    • switch(表达式) </p>
+<p>​    –多个case分支 </p>
+<p>​    –满足一个分支后，需要break </p>
+<p>​    –最后一个分支为default </p>
+<p>参看例子SwitchTest.java:point_down:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SwitchTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a1 = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">int</span> a2 = <span class="number">2</span>;</span><br><span class="line">		<span class="keyword">switch</span>(a1+a2)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>: System.out.println(<span class="string">"aaaaaaa"</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">2</span>: System.out.println(<span class="string">"bbbbbbb"</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>: System.out.println(<span class="string">"ccccccc"</span>);</span><br><span class="line">					<span class="comment">//break;	</span></span><br><span class="line">			<span class="keyword">default</span>:System.out.println(<span class="string">"ddddddd"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		String b = <span class="string">"abc"</span>;<span class="comment">//定义一个字符串</span></span><br><span class="line">		<span class="keyword">switch</span>(b)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"abc"</span>: System.out.println(<span class="string">"eeeeeee"</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"def"</span>: System.out.println(<span class="string">"fffffff"</span>);</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">			<span class="keyword">case</span> <span class="string">"hgi"</span>: System.out.println(<span class="string">"ggggggg"</span>);</span><br><span class="line">					<span class="keyword">break</span>;	</span><br><span class="line">			<span class="keyword">default</span>:System.out.println(<span class="string">"hhhhhhh"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><p><strong>• while</strong> </p>
+<p><strong>• do…while</strong>  参看WhileTest.java :point_down:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WhileTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"=============While Test=========="</span>);</span><br><span class="line">		<span class="keyword">int</span> x = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">while</span> (x &lt; <span class="number">20</span>) &#123;</span><br><span class="line">			System.out.print(<span class="string">"value of x : "</span> + x);</span><br><span class="line">			x++;</span><br><span class="line">			System.out.print(<span class="string">"\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"=============Do  While Test=========="</span>);</span><br><span class="line">		x = <span class="number">10</span>;</span><br><span class="line">		<span class="keyword">do</span> &#123;</span><br><span class="line">			x++;</span><br><span class="line">			<span class="keyword">if</span>(x%<span class="number">2</span> == <span class="number">0</span>)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">continue</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">"value of x : "</span> + x);</span><br><span class="line">		&#125; <span class="keyword">while</span> (x &lt; <span class="number">20</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>• for</strong>              参看ForTest.java:point_down:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ForTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">5</span>;j++)</span><br><span class="line">			&#123;</span><br><span class="line">				<span class="keyword">if</span>(j&lt;=i)</span><br><span class="line">				&#123;</span><br><span class="line">					System.out.print(<span class="string">"*"</span>);</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">				&#123;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>• break</strong>        //中断循环并退出 </p>
+<p><strong>• continue</strong>;  //跳出本次循环，继续下次循环</p>
+<h3 id="第四节-自定义函数"><a href="#第四节-自定义函数" class="headerlink" title="第四节 自定义函数"></a>第四节 自定义函数</h3><p>• 函数必须放在类的范围内 </p>
+<p>• 修饰词(public 或者 static) 返回值(int 或者void)，函数名(形 参列表) {函数体} </p>
+<p>• 通常情况下，我们都建议方法是public。 </p>
+<p>• 函数可以调用其他的函数，例如上例中，main函数调用 了add函数。 </p>
+<p>• <strong>递归函数</strong>调用，需要注意终止性，参看FactorialTest.java:point_down:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FactorialTest</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a = <span class="number">5</span>;</span><br><span class="line">		<span class="keyword">int</span> b = factorialCalculation(a);</span><br><span class="line">		System.out.println(<span class="string">"The factorial of "</span> + a + <span class="string">" is "</span> + b);</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">factorialCalculation</span><span class="params">(<span class="keyword">int</span> m)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (m &gt; <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> m * factorialCalculation(m - <span class="number">1</span>);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>• 同一个类中，函数名称可以相同，即重载函数 (overload)，但是函数参数的个数或者类型必须 有所不同 </p>
+<p>• 不能以返回值来区分同名的函数 </p>
+<p>参看OverloadTest.java:point_down:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OverloadTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">2</span>;</span><br><span class="line">		System.out.println(add(<span class="number">1</span>,<span class="number">2</span>));</span><br><span class="line">		System.out.println(add(<span class="number">1.5</span>,<span class="number">2.5</span>));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n)</span> </span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> m + n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">add</span><span class="params">(<span class="keyword">double</span> m, <span class="keyword">double</span> n)</span> <span class="comment">//和第9行行数重载overload</span></span></span><br><span class="line"><span class="function">	</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> m + n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 以下函数非法，和第9行的函数名相同，形参相同</span></span><br><span class="line"><span class="comment">	public static double add(int m, int n) </span></span><br><span class="line"><span class="comment">	&#123;</span></span><br><span class="line"><span class="comment">		return (double) (m + n);</span></span><br><span class="line"><span class="comment">	&#125;</span></span><br><span class="line"><span class="comment">	*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Scanner-类的使用"><a href="#Scanner-类的使用" class="headerlink" title="Scanner 类的使用"></a>Scanner 类的使用</h3><p>Java通过 Scanner 类来获取用户的输入.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Scanner类的基本语句</span></span><br><span class="line">Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br></pre></td></tr></table></figure>
+
+<p>下面用一道例题来体验一下叭</p>
+<p>题目：从键盘输入5个整数，求和并输出结果。提示：使用循环读取5个int类型的数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">int5</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner input = <span class="keyword">new</span> Scanner (System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入5个整数："</span>);</span><br><span class="line">		<span class="keyword">int</span> a= input.nextInt();</span><br><span class="line">		<span class="keyword">int</span> b= input.nextInt();</span><br><span class="line">		<span class="keyword">int</span> c= input.nextInt();</span><br><span class="line">		<span class="keyword">int</span> d= input.nextInt();</span><br><span class="line">		<span class="keyword">int</span> e= input.nextInt();</span><br><span class="line">		<span class="keyword">int</span> sum=a+b+c+d+e;</span><br><span class="line">		System.out.println(<span class="string">"这5个整数的和是："</span>+ sum);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200227150000.png" alt="运行结果"></p>
+<h3 id="重载函数的应用"><a href="#重载函数的应用" class="headerlink" title="重载函数的应用"></a>重载函数的应用</h3><h4 id="求最大数"><a href="#求最大数" class="headerlink" title="求最大数"></a>求最大数</h4><p>​    a)    编写程序比较两个整数和浮点数的大小，并输出较大的数值。要求：</p>
+<p>​                    i.   编写两个同名重载方法max，分别用于比较整数和浮点数（double）的大小，并返回其中较大的值；</p>
+<p>​                    ii.   在main方法中，读取用户输入的数据，调用max方法，并输出结果。</p>
+<h5 id="代码如下："><a href="#代码如下：" class="headerlink" title="代码如下："></a>代码如下：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> java3;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">max</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Scanner input = <span class="keyword">new</span> Scanner (System.in);</span><br><span class="line">		System.out.println(<span class="string">"请输入两个整数："</span>);</span><br><span class="line">		<span class="keyword">int</span> n1=input.nextInt();</span><br><span class="line">		<span class="keyword">int</span> n2=input.nextInt();</span><br><span class="line">		System.out.println(<span class="string">"其中较大的整数为："</span>+max(n1,n2));</span><br><span class="line">		</span><br><span class="line">		System.out.println(<span class="string">"请输入两个浮点数:"</span>);</span><br><span class="line">		<span class="keyword">double</span> n3=input.nextDouble();</span><br><span class="line">		<span class="keyword">double</span> n4=input.nextDouble();</span><br><span class="line">		System.out.println(<span class="string">"其中较大的浮点数为："</span>+max(n3,n4));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">max</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (a&gt;b)&#123;</span><br><span class="line">			<span class="keyword">return</span> a;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> b;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">max</span><span class="params">(<span class="keyword">double</span> a,<span class="keyword">double</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (a&gt;b)&#123;</span><br><span class="line">			<span class="keyword">return</span> a;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> b;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="运行结果："><a href="#运行结果：" class="headerlink" title="运行结果："></a>运行结果：</h5><p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200227150001.png" alt="max number"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Yannis</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/02/27/Java%E7%AC%AC%E4%B8%89%E7%AB%A0/">http://yoursite.com/2020/02/27/Java%E7%AC%AC%E4%B8%89%E7%AB%A0/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>生活就是这样一半惊喜，一半遗憾。</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"># 学习笔记</a>
+                    
+                        <a href="/tags/%E5%A4%A7%E4%B8%80/"># 大一</a>
+                    
+                        <a href="/tags/Java/"># Java</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();" target="_blank" rel="noopener">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/02/27/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A68.1/">高数 第八章 summary</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+    <div id="gitalk-container"></div>
+    <script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '23c1033ea835ac959d8a',
+        clientSecret: '62231592690a47c06708abd3b26865d9206769a7',
+        repo: 'blog',
+        owner: 'Yannis175',
+        admin: 'Yannis175',
+        id: md5(&lt;%= theme.gitalk.ID %&gt;),,
+        labels: 'Gitalk'.split(',').filter(l => l),
+        perPage: 10,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+      gitalk.render('gitalk-container')
+</script>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Yannis | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+          </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
