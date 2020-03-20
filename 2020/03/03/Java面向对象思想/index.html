@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Yannis">
+
+
+    <meta name="subtitle" content="吼吼吼˙Ⱉ˙ฅ ​​​">
+
+
+
+
+<title>Java 第三章 类和对象 | Yannis&#39;s Blog.</title>
+
+
+
+    <link rel="icon" href="https://img-blog.csdnimg.cn/20200105163142421.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lhbm5pczc1,size_16,color_FFFFFF,t_70">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Yannis&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Yannis&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Java 第三章 类和对象</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Yannis</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 3, 2020&nbsp;&nbsp;13:20:45</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Java/">Java</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="类和对象概念"><a href="#类和对象概念" class="headerlink" title="类和对象概念"></a>类和对象概念</h3><p>对象用计算机语言对问题域中事物的描述，对象通过“属性（attribute）”和“方法（method）”来分别对应事物所具有的静态属性和动态属性。</p>
+<p><strong>类</strong>：类是一类对象的模板，它描述一类对象的行为和状态。类是用于秒书同一类型的对象的一个抽象概念，类中定义了这一类对象所因具有的静态和动态属性。</p>
+<p><strong>对象</strong>：对象是类的一个实例，有状态和行为。例如，一条狗是一个对象，它的状态有：颜色、名字、品种；行为有：摇尾巴、叫、吃等。</p>
+<h3 id="类（对象）之间的关系"><a href="#类（对象）之间的关系" class="headerlink" title="类（对象）之间的关系"></a>类（对象）之间的关系</h3><h4 id="关联关系"><a href="#关联关系" class="headerlink" title="关联关系"></a>关联关系</h4><h4 id="继承关系（一般和特殊）"><a href="#继承关系（一般和特殊）" class="headerlink" title="继承关系（一般和特殊）"></a>继承关系（一般和特殊）</h4><p>XX是一种XX</p>
+<h4 id="聚合关系（整体和部分）"><a href="#聚合关系（整体和部分）" class="headerlink" title="聚合关系（整体和部分）"></a>聚合关系（整体和部分）</h4><h4 id="实现关系"><a href="#实现关系" class="headerlink" title="实现关系"></a>实现关系</h4><h3 id="面向对象思想"><a href="#面向对象思想" class="headerlink" title="面向对象思想"></a>面向对象思想</h3><p>面向对象的基本思想是从现实世界中客观存在的事物出发来构造软件系统，并在系统中构造中尽可能运用人类的自然思维方式。</p>
+<p>面向对现象更加运用人类在日常思维逻辑中经常采用的思想方法与原则，如抽象、分类、继承、聚合、多态等。</p>
+<h4 id="面向对象设计的思想时，应考虑以下三个问题："><a href="#面向对象设计的思想时，应考虑以下三个问题：" class="headerlink" title="面向对象设计的思想时，应考虑以下三个问题："></a>面向对象设计的思想时，应考虑以下三个问题：</h4><ol>
+<li>考虑在这个问题中有哪些类和对象</li>
+<li>考虑这些类和对象有哪些属性和方法</li>
+<li>考虑类和类之间有哪些关系</li>
+</ol>
+<h4 id="Java与面向对象"><a href="#Java与面向对象" class="headerlink" title="Java与面向对象"></a>Java与面向对象</h4><ul>
+<li>对象时Java程序的核心，在Java程序中“万事万物皆对象”</li>
+<li>对象可以看做时静态属性（成员变量）和动态属性（方法）的封装体</li>
+<li>类时用来创建同一类型的对象的“模板”，在一个类中定义了该类对象所具备的成员变量以及方法</li>
+<li>J2SDK提供了很多类 供编程人员使用，编程人员也可以定义自己的类。</li>
+<li>成员变量=属性、方法=函数</li>
+</ul>
+<p>下面用一个简单的类来理解下Java中类的定义：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Dog</span></span>&#123;</span><br><span class="line">  String breed;</span><br><span class="line">  <span class="keyword">int</span> age;</span><br><span class="line">  String color;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">barking</span><span class="params">()</span></span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">hungry</span><span class="params">()</span></span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line"> </span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">sleeping</span><span class="params">()</span></span>&#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="为什么用对象？"><a href="#为什么用对象？" class="headerlink" title="为什么用对象？"></a>为什么用对象？</h4><p>面向对象的编程——一组对象相互<strong>配合</strong>通过<strong>沟通</strong>完成特定功能</p>
+<p>​    所有的paradigm都是对现实问题的抽象</p>
+<p>​        汇编时对机器语言的抽象</p>
+<p>​        面向过程的语言时对汇编的抽象</p>
+<p>​        对象更加符合对于现实问题的抽象</p>
+<p>对象都有对外服务的接口</p>
+<p>​    通过继承可以复用（reuse）</p>
+<p>对象隐藏内部服务的实现</p>
+<p>​    通过聚合可以复用（reuse）</p>
+<p>面向对象更加容易使我们达到这些年来苦苦追求的境界</p>
+<p>​    Reusable、Extensibility、维护和替换更加方便、…</p>
+<p>组件——比对象更高的层次上的抽象（二进制级别）</p>
+<p>​    EJB、Web Service、CORBA、COM、…</p>
+<h3 id="Java-的类"><a href="#Java-的类" class="headerlink" title="Java 的类"></a>Java 的类</h3><h4 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用class关键字定义一个类，例如：</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="comment">//成员变量定义</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age=<span class="number">20</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*声明成员变量的格式为：</span></span><br><span class="line"><span class="comment">    	private int id;		private int age=20;*/</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//方法定义</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">        age=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id；</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*声明方法的格式为：</span></span><br><span class="line"><span class="comment">    	public int getAge()&#123;</span></span><br><span class="line"><span class="comment">    	return age;</span></span><br><span class="line"><span class="comment">    	&#125;*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>类的定义主要包含三种类型变量：</p>
+<p><strong>局部变量</strong>：<strong>在方法、构造方法或者语句块中定义的变量</strong>被称为局部变量。变量声明和初始化都是在方法中，方法结束后，变量就会自动销毁。</p>
+<p><strong>成员变量</strong>:成员变量是<strong>定义在类中</strong>，方法体之外的变量。这种变量在创建对象的时候实例化。成员变量可以被类中方法、构造方法和特定类的语句块访问。</p>
+<p><strong>类变量：</strong>定义在类中，方法体之外，但必<strong>须要有 static 来声明变量类型</strong>。静态成员属于整个类，可通过对象名或类名来调用。</p>
+<h4 id="构造方法（构造函数）"><a href="#构造方法（构造函数）" class="headerlink" title="构造方法（构造函数）"></a>构造方法（构造函数）</h4><p>每个类都有构造方法。如果没有显式地为类定义构造方法，Java编译器将会为该类提供一个默认构造方法。</p>
+<p>在创建一个对象的时候，至少要调用一个构造方法。构造方法的名称必须与类同名，一个类可以有多个构造方法。</p>
+<ul>
+<li><strong>使用new+构造方法 创建一个新的对象</strong></li>
+<li>构造函数是定义在Java类中的一个用来初始化对象的函数</li>
+<li><strong>构造函数与类同名(包括大小写),没有返回值,不能有void也不可</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类名</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">int</span> age=<span class="number">20</span>;</span><br><span class="line"><span class="comment">//构造方法名    </span></span><br><span class="line">    Person(<span class="keyword">int</span> _id, <span class="keyword">int</span> _age)&#123;</span><br><span class="line">        id=_id;</span><br><span class="line">        age=_age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建对象时，<strong>使用构造函数初始化对象的成员变量</strong>。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> constructor;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">person</span></span>&#123;</span><br><span class="line"></span><br><span class="line">	    <span class="keyword">int</span> id;</span><br><span class="line">	    <span class="keyword">int</span> age=<span class="number">20</span>;</span><br><span class="line">	    </span><br><span class="line">	    person(<span class="keyword">int</span> _id, <span class="keyword">int</span> _age)&#123;</span><br><span class="line">	        id=_id;</span><br><span class="line">	        age=_age;</span><br><span class="line">	    &#125;</span><br><span class="line"></span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">	      	  person tom = <span class="keyword">new</span> person(<span class="number">1</span>,<span class="number">25</span>);</span><br><span class="line">	            Point P = <span class="keyword">new</span> Point();</span><br><span class="line">	  	  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">Point</span></span>&#123;</span><br><span class="line">	    Point()&#123;&#125;</span><br><span class="line">	    <span class="keyword">int</span> x;</span><br><span class="line">	    <span class="keyword">int</span> y;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>当没有指定构造函数时，编译器为类自动添加形如 <strong>类名（）{ }</strong> 的构造函数</p>
+</li>
+<li><p>则一旦指定构造函数，编译器则不会自动添加</p>
+</li>
+</ul>
+<h4 id="Java面向对象基本概念——引用"><a href="#Java面向对象基本概念——引用" class="headerlink" title="Java面向对象基本概念——引用"></a>Java面向对象基本概念——引用</h4><p>即一小块内存只占一大块内存</p>
+<h4 id="类和对象的关系"><a href="#类和对象的关系" class="headerlink" title="类和对象的关系"></a>类和对象的关系</h4><h3 id="内存分析"><a href="#内存分析" class="headerlink" title="内存分析"></a>内存分析</h3><h3 id="方法的重载"><a href="#方法的重载" class="headerlink" title="方法的重载"></a>方法的重载</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>如果有<strong>两个方法的方法名相同</strong>，但<strong>参数不同</strong>，那么可以说一个方法是另一个方法的重载。</p>
+<h3 id="Tips："><a href="#Tips：" class="headerlink" title="Tips："></a>Tips：</h3><h4 id="命名规则！！！"><a href="#命名规则！！！" class="headerlink" title="命名规则！！！"></a>命名规则！！！</h4><ul>
+<li><p><strong>类名</strong>的首字母大写</p>
+<p>​    eg: HelloWorld、Person、Dog</p>
+</li>
+<li><p><strong>变量名和方法名</strong>的首字母小写</p>
+<p>​    eg:变量名 int i;   int j;  int furColor;</p>
+</li>
+<li><p>运用<strong>驼峰命名法</strong></p>
+</li>
+</ul>
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>使用new来创建一个新的对象需要三步：</p>
+<p>1.声明：其中包括对象名称和对象类型</p>
+<p>2.实例化：使用new关键字来创建一个新的对象 eg:Circle c1=new Circle()</p>
+<p>3.初始化：使用new创建对象时会调用构造方法初始化对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Circle c1=<span class="keyword">new</span> Circle()  <span class="comment">//实例化对象</span></span><br><span class="line">c1.成员变量名称；	<span class="comment">//访问类种的变量</span></span><br><span class="line">c1.方法名()；	<span class="comment">//访问类中的方法</span></span><br></pre></td></tr></table></figure>
+
+<p>Circle</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Circle</span></span>&#123;</span><br><span class="line"><span class="keyword">double</span> radius = <span class="number">1.0</span>;</span><br><span class="line">	<span class="function"><span class="keyword">double</span> <span class="title">getArea</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> radius * radius * <span class="number">3.14</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">		Circle c1 = <span class="keyword">new</span> Circle();</span><br><span class="line">		System.out.println(<span class="string">"circle1的面积是："</span> + c1.getArea());</span><br><span class="line">		</span><br><span class="line">       c2.radius = <span class="number">15</span>;</span><br><span class="line">		Circle c2 = <span class="keyword">new</span> Circle();</span><br><span class="line">		System.out.println(<span class="string">"circle2的面积是："</span> + c2.getArea());</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Yannis</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/03/03/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/">http://yoursite.com/2020/03/03/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>生活就是这样一半惊喜，一半遗憾。</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"># 学习笔记</a>
+                    
+                        <a href="/tags/%E5%A4%A7%E4%B8%80/"># 大一</a>
+                    
+                        <a href="/tags/Java/"># Java</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();" target="_blank" rel="noopener">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/04/Python%E7%A8%8B%E5%BA%8F%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%90/">Python 程序实例解析</a>
+            
+            
+            <a class="next" rel="next" href="/2020/03/03/Python%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/">Python 程序设计基本方法</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+    <div id="gitalk-container"></div>
+    <script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '23c1033ea835ac959d8a',
+        clientSecret: '62231592690a47c06708abd3b26865d9206769a7',
+        repo: 'blog',
+        owner: 'Yannis175',
+        admin: 'Yannis175',
+        id: md5(&lt;%= theme.gitalk.ID %&gt;),,
+        labels: 'Gitalk'.split(',').filter(l => l),
+        perPage: 10,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+      gitalk.render('gitalk-container')
+</script>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Yannis | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+          </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

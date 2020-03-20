@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="Yannis">
+
+
+    <meta name="subtitle" content="吼吼吼˙Ⱉ˙ฅ ​​​">
+
+
+
+
+<title>Python 程序实例解析 | Yannis&#39;s Blog.</title>
+
+
+
+    <link rel="icon" href="https://img-blog.csdnimg.cn/20200105163142421.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1lhbm5pczc1,size_16,color_FFFFFF,t_70">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">Yannis&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">Yannis&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">Archives</a>
+                
+                    <a class="menu-item" href="/category">Categories</a>
+                
+                    <a class="menu-item" href="/tag">Tags</a>
+                
+                    <a class="menu-item" href="/about">About</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Python 程序实例解析</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">Yannis</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">March 4, 2020&nbsp;&nbsp;19:18:10</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Python/">Python</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h3 id="温度转换实例"><a href="#温度转换实例" class="headerlink" title="温度转换实例"></a>温度转换实例</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">val=input(<span class="string">"请输入带温度表示符号的温度值（例如32C/200f）："</span>)</span><br><span class="line"><span class="keyword">if</span> val[<span class="number">-1</span>] <span class="keyword">in</span> [<span class="string">'C'</span>,<span class="string">'c'</span>]:</span><br><span class="line">    f=<span class="number">1.8</span>*float(val[<span class="number">0</span>:<span class="number">-1</span>])+<span class="number">32</span></span><br><span class="line">	print(<span class="string">"转换吼的温度为：%。2fF"</span>%f);</span><br><span class="line"><span class="keyword">elif</span> val[<span class="number">-1</span>] <span class="keyword">in</span> [<span class="string">'F'</span>,<span class="string">'f'</span>]：</span><br><span class="line">	c=(float(val[<span class="number">0</span>:<span class="number">-1</span>]<span class="number">-32</span>))/<span class="number">1.8</span></span><br><span class="line">    print(<span class="string">"转换后的温度为：%。2fC"</span>%c)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">"输入错误"</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h3><p><img src="/img/postimg/%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%95%B0%E7%BB%84.png" alt="字符串"></p>
+<p>格式：<strong>[N:M]</strong>表示从N到M（不包含M）的子字符串，即<strong>左闭右开区间</strong></p>
+<h3 id="格式框架"><a href="#格式框架" class="headerlink" title="格式框架"></a>格式框架</h3><h4 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h4><p><strong>单层缩进</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> &lt;条件<span class="number">1</span>&gt;:</span><br><span class="line">  &lt;语句块<span class="number">1</span>&gt;</span><br><span class="line"><span class="keyword">elif</span>&lt;条件<span class="number">2</span>&gt;:</span><br><span class="line">  &lt;语句块<span class="number">2</span>&gt;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">  &lt;语句块N&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>多层缩进</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> &lt;&gt;:</span><br><span class="line">  <span class="keyword">if</span>&lt;&gt;:</span><br><span class="line">    &lt;&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>Python有两种注释方法：</p>
+<ul>
+<li>单行注释以#开头</li>
+<li>多行注释 ‘’‘   ’‘’（三个单引号j将注释括起来）or “””   “””(三个双引号将注释括起来)</li>
+</ul>
+<h3 id="命名与保留字"><a href="#命名与保留字" class="headerlink" title="命名与保留字"></a>命名与保留字</h3><p>变量名首字符不能是数字！中间不能出现空格！</p>
+<p>Python的33个保留字（关键字）:arrow_down:</p>
+<table>
+<thead>
+<tr>
+<th>False</th>
+<th>def</th>
+<th>if</th>
+<th>raise</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>None</td>
+<td>del</td>
+<td>import</td>
+<td>return</td>
+</tr>
+<tr>
+<td>True</td>
+<td>elif</td>
+<td>in</td>
+<td>try</td>
+</tr>
+<tr>
+<td>and</td>
+<td>else</td>
+<td>is</td>
+<td>while</td>
+</tr>
+<tr>
+<td>as</td>
+<td>except</td>
+<td>lambda</td>
+<td>with</td>
+</tr>
+<tr>
+<td>assert</td>
+<td>finally</td>
+<td>nonlocal</td>
+<td>yield</td>
+</tr>
+<tr>
+<td>break</td>
+<td>for</td>
+<td>not</td>
+<td></td>
+</tr>
+<tr>
+<td>class</td>
+<td>from</td>
+<td>or</td>
+<td></td>
+</tr>
+<tr>
+<td>continue</td>
+<td>global</td>
+<td>pass</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="赋值语句"><a href="#赋值语句" class="headerlink" title="赋值语句"></a>赋值语句</h3><p>“=”表示赋值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#单一赋值</span></span><br><span class="line">x=y</span><br><span class="line"><span class="comment">#同步赋值</span></span><br><span class="line">x,y=y,x</span><br></pre></td></tr></table></figure>
+
+<h3 id="分支语句"><a href="#分支语句" class="headerlink" title="分支语句"></a>分支语句</h3><p>根据判断条件选择程序执行路径</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> &lt;条件<span class="number">1</span>&gt;:</span><br><span class="line">  &lt;语句块<span class="number">1</span>&gt;</span><br><span class="line"><span class="keyword">elif</span>&lt;条件<span class="number">2</span>&gt;:</span><br><span class="line">  &lt;语句块<span class="number">2</span>&gt;</span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">  &lt;语句块N&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="循环语句"><a href="#循环语句" class="headerlink" title="循环语句"></a>循环语句</h3><p>根据判断条件确定一段程序是否再次执行一次或多次。</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><h4 id="input（）函数"><a href="#input（）函数" class="headerlink" title="input（）函数"></a>input（）函数</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;变量&gt; = input(&lt;提示性文字&gt;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="eval-函数"><a href="#eval-函数" class="headerlink" title="eval()函数"></a>eval()函数</h4><p>它能够用Python表达式的方式解析并执行字符串，并将返回结果输出。</p>
+<p>或者说 将输入的字符串转成Python语句，并执行该语句。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval(&lt;字符串&gt;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;x=<span class="number">1</span></span><br><span class="line">&gt;&gt;&gt;eval(<span class="string">"x+1"</span>)</span><br><span class="line"><span class="number">2</span></span><br><span class="line">&gt;&gt;&gt;eval(<span class="string">"'hello'"</span>)       <span class="comment">#注意是'''  '''o ！</span></span><br><span class="line"><span class="string">'hello'</span></span><br></pre></td></tr></table></figure>
+
+<p>如果输入一个数字(小数或负数)，并用程序对这个数字进行计算，则使用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval(input(&lt;输入提示字符串&gt;))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a =eval(input(“请输入要计算的数值：”))</span><br><span class="line">请输入要计算的数值：<span class="number">1.23</span></span><br><span class="line">&gt;&gt;&gt;print(a*<span class="number">2</span>)</span><br><span class="line"><span class="number">2.46</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="print-函数"><a href="#print-函数" class="headerlink" title="print()函数"></a>print()函数</h4><p>当输出纯字符信息时，可以直接将待输出内容传递给print()函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(&lt;待输出字符串&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>当输出变量值时，需要采用格式化输出方式，通过format()方法将待输出变量整理成所期望输出的格式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a,b=<span class="number">10</span>,<span class="number">10.24024</span></span><br><span class="line">&gt;&gt;&gt;print(<span class="string">"转换后的温度是&#123;:.2f&#125;C"</span>.format(a))</span><br><span class="line">转换后的温度是<span class="number">10.00</span>C</span><br><span class="line">&gt;&gt;&gt;print(<span class="string">"转换后的温度是&#123;:.2f&#125;C"</span>.format(b))</span><br><span class="line">转换后的温度是<span class="number">10.24</span>C</span><br></pre></td></tr></table></figure>
+
+<h3 id="引用函数库的方法"><a href="#引用函数库的方法" class="headerlink" title="引用函数库的方法"></a>引用函数库的方法</h3><h4 id="Method-1："><a href="#Method-1：" class="headerlink" title="Method 1："></a>Method 1：</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &lt;库名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>程序中调用库中函数格式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;库名&gt;.&lt;函数名&gt;(&lt;函数参数&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>此方法中，Python解释器 将  <strong>&lt;库名&gt;.&lt;函数名&gt;</strong>  整体作为函数名</p>
+<h5 id="Method-2"><a href="#Method-2" class="headerlink" title="Method 2:"></a>Method 2:</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> &lt;库名&gt; <span class="keyword">import</span> &lt;函数名,函数名,…,函数名&gt;</span><br><span class="line">form &lt;库名&gt; <span class="keyword">import</span> * <span class="comment"># *表示通配符，表示所有函数</span></span><br></pre></td></tr></table></figure>
+
+<p>程序中调用库中函数格式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;函数名&gt;(&lt;函数参数&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>此方法中，Python解释器 将  <strong>&lt;函数名&gt;</strong>  作为函数名</p>
+<h3 id="turtle库语法元素分析"><a href="#turtle库语法元素分析" class="headerlink" title="turtle库语法元素分析"></a>turtle库语法元素分析</h3><h4 id="绘图坐标体系"><a href="#绘图坐标体系" class="headerlink" title="绘图坐标体系"></a>绘图坐标体系</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">turtle.setup(width,height,startx,starty)</span><br></pre></td></tr></table></figure>
+
+<p>作用：设置主窗体的大小和位置</p>
+<p>Tips:</p>
+<ul>
+<li>width和height表示窗口的 宽和高；小数表示比例</li>
+<li>startx和starty表示窗口 左（上）侧与屏幕 左（上）的像素距离；None 表示水平（垂直）于屏幕中央</li>
+</ul>
+<h4 id="画笔控制函数"><a href="#画笔控制函数" class="headerlink" title="画笔控制函数"></a>画笔控制函数</h4><h5 id="起笔和落笔"><a href="#起笔和落笔" class="headerlink" title="起笔和落笔"></a>起笔和落笔</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">turtle.penup()</span><br><span class="line">turtle.pendown()</span><br></pre></td></tr></table></figure>
+
+<h5 id="设置画笔尺寸"><a href="#设置画笔尺寸" class="headerlink" title="设置画笔尺寸"></a>设置画笔尺寸</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">turtle.pensize()</span><br></pre></td></tr></table></figure>
+
+<h5 id="设置画笔宽度"><a href="#设置画笔宽度" class="headerlink" title="设置画笔宽度"></a>设置画笔宽度</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">turtle.width()</span><br><span class="line"><span class="comment">#or</span></span><br><span class="line">turtle.penside(width)</span><br></pre></td></tr></table></figure>
+
+<h5 id="设置画笔颜色"><a href="#设置画笔颜色" class="headerlink" title="设置画笔颜色"></a>设置画笔颜色</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">turtle.pencolor()</span><br></pre></td></tr></table></figure>
+
+<h4 id="形状绘制函数"><a href="#形状绘制函数" class="headerlink" title="形状绘制函数"></a>形状绘制函数</h4><h5 id="控制画笔前进距离"><a href="#控制画笔前进距离" class="headerlink" title="控制画笔前进距离"></a>控制画笔前进距离</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">turtle.fd(distance)</span><br></pre></td></tr></table></figure>
+
+<h5 id="改变画笔绘制方向"><a href="#改变画笔绘制方向" class="headerlink" title="改变画笔绘制方向"></a>改变画笔绘制方向</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">turtle.seth(to_angle)	<span class="comment">#to_angle:角度的整数值</span></span><br></pre></td></tr></table></figure>
+
+<h5 id="绘制圆弧"><a href="#绘制圆弧" class="headerlink" title="绘制圆弧"></a>绘制圆弧</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i inrange(&lt;循环次数&gt;):</span><br><span class="line">    turtle.circle(radius,extent=<span class="literal">None</span>)</span><br><span class="line">    <span class="comment">#extend 表示绘制弧度的角度</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h3><p>算法是数学和计算机领域的概念，指完成特定计算的一组有序操作。在IPO模式中，确定输入和输出后，处理过程通常也称为算法。</p>
+<h3 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h3><h4 id="温度转换"><a href="#温度转换" class="headerlink" title="温度转换"></a>温度转换</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">TempStr =input(<span class="string">"请输入符号："</span>)</span><br><span class="line">x=eval(input(<span class="string">"请输入温度的数值："</span>))</span><br><span class="line"><span class="keyword">if</span> TempStr <span class="keyword">in</span> [<span class="string">'F'</span>,<span class="string">'f'</span>]:</span><br><span class="line">   C = (x - <span class="number">32</span>) / <span class="number">1.8</span></span><br><span class="line">   print(<span class="string">"华氏温度&#123;&#125;转换为摄氏度温度是：&#123;:.0f&#125;C"</span>.format(TempStr,C))</span><br><span class="line"><span class="keyword">elif</span> TempStr <span class="keyword">in</span> [<span class="string">'C'</span>,<span class="string">'c'</span>]:</span><br><span class="line">   F = x*<span class="number">1.8</span> + <span class="number">32</span></span><br><span class="line">   print(<span class="string">"摄氏温度&#123;&#125;转换为华氏温度是：&#123;:.0f&#125;F"</span>.format(TempStr,F))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   print(<span class="string">"输入格式错误"</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/2.1.png" alt="2.1"></p>
+<h4 id="汇率兑换程序"><a href="#汇率兑换程序" class="headerlink" title="汇率兑换程序"></a>汇率兑换程序</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">x=input(<span class="string">"请输入金钱种类（美元：D or d；人民币：R or d）："</span>)</span><br><span class="line">money=eval(input(<span class="string">"请输入金额;"</span>))</span><br><span class="line"><span class="keyword">if</span> x <span class="keyword">in</span> [<span class="string">'D'</span>,<span class="string">'d'</span>]:</span><br><span class="line">   money=<span class="number">6</span>*money</span><br><span class="line">   print(<span class="string">"换算为人民币：&#123;:.2f&#125;"</span>.format(money))</span><br><span class="line"><span class="keyword">elif</span> x <span class="keyword">in</span> [<span class="string">'R'</span>,<span class="string">'r'</span>]:</span><br><span class="line">   money=money/<span class="number">6</span></span><br><span class="line">   print(<span class="string">"换算为美元：&#123;:.2f&#125;"</span>.format(money))</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">   print(<span class="string">"输入格式错误"</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/2.2.png" alt="2.2"></p>
+<h4 id="彩色蟒蛇"><a href="#彩色蟒蛇" class="headerlink" title="彩色蟒蛇"></a>彩色蟒蛇</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#e2.1DrawPython.py</span></span><br><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.setup(<span class="number">650</span>, <span class="number">350</span>, <span class="number">200</span>, <span class="number">200</span>)</span><br><span class="line">turtle.penup()</span><br><span class="line">turtle.fd(<span class="number">-250</span>)</span><br><span class="line">turtle.pendown()</span><br><span class="line">turtle.pensize(<span class="number">25</span>)</span><br><span class="line">turtle.pencolor(<span class="string">"orange"</span>)</span><br><span class="line">turtle.seth(<span class="number">-40</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">    turtle.circle(<span class="number">40</span>, <span class="number">80</span>)</span><br><span class="line">    turtle.pencolor(<span class="string">"black"</span>)</span><br><span class="line">    turtle.circle(<span class="number">-40</span>, <span class="number">80</span>)</span><br><span class="line">    turtle.pencolor(<span class="string">"red"</span>)</span><br><span class="line">turtle.circle(<span class="number">40</span>, <span class="number">80</span>/<span class="number">2</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span>)</span><br><span class="line">turtle.pencolor(<span class="string">"gold"</span>)</span><br><span class="line">turtle.circle(<span class="number">16</span>, <span class="number">180</span>)</span><br><span class="line">turtle.fd(<span class="number">40</span> * <span class="number">2</span>/<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/2.3.png" alt="2.3"></p>
+<h4 id="等边三角形的绘制"><a href="#等边三角形的绘制" class="headerlink" title="等边三角形的绘制"></a>等边三角形的绘制</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>):          <span class="comment">#三条边三个循环，i=0,1,2</span></span><br><span class="line"> turtle.seth(i*<span class="number">120</span>)         <span class="comment">#每个循环 转120°</span></span><br><span class="line"> turtle.fd(<span class="number">300</span>)             <span class="comment">#每个循环 走300个像素</span></span><br><span class="line">turtle.done()</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/2.4.png" alt="2.4"></p>
+<h4 id="叠加等边三角形的绘制"><a href="#叠加等边三角形的绘制" class="headerlink" title="叠加等边三角形的绘制"></a>叠加等边三角形的绘制</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line">turtle.setup(<span class="number">650</span>,<span class="number">350</span>,<span class="number">200</span>,<span class="number">200</span>)</span><br><span class="line">turtle.seth(<span class="number">-120</span>)</span><br><span class="line">turtle.fd(<span class="number">120</span>)</span><br><span class="line">turtle.seth(<span class="number">0</span>)</span><br><span class="line">turtle.fd(<span class="number">120</span>)</span><br><span class="line">turtle.seth(<span class="number">120</span>)</span><br><span class="line">turtle.fd(<span class="number">120</span>)</span><br><span class="line">turtle.seth(<span class="number">0</span>)</span><br><span class="line">turtle.fd(<span class="number">120</span>)</span><br><span class="line">turtle.seth(<span class="number">-120</span>)</span><br><span class="line">turtle.fd(<span class="number">120</span>)</span><br><span class="line">turtle.seth(<span class="number">0</span>)</span><br><span class="line">turtle.fd(<span class="number">120</span>)</span><br><span class="line">turtle.seth(<span class="number">120</span>)</span><br><span class="line">turtle.fd(<span class="number">240</span>)</span><br><span class="line">turtle.seth(<span class="number">-120</span>)</span><br><span class="line">turtle.fd(<span class="number">120</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="/img/postimg/2.5.png" alt="2.5"></p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>Yannis</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/03/04/Python%E7%A8%8B%E5%BA%8F%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%90/">http://yoursite.com/2020/03/04/Python%E7%A8%8B%E5%BA%8F%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%90/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span>生活就是这样一半惊喜，一半遗憾。</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%A4%A7%E4%B8%80/"># 大一</a>
+                    
+                        <a href="/tags/Python/"># Python</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();" target="_blank" rel="noopener">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/03/12/Java%E5%85%B3%E9%94%AE%E5%AD%97/">Java 关键字和对象</a>
+            
+            
+            <a class="next" rel="next" href="/2020/03/03/Java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/">Java 第三章 类和对象</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+
+    <div id="gitalk-container"></div>
+    <script src="//cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+<div id="gitalk-container"></div>
+<script type="text/javascript">
+      var gitalk = new Gitalk({
+        clientID: '23c1033ea835ac959d8a',
+        clientSecret: '62231592690a47c06708abd3b26865d9206769a7',
+        repo: 'blog',
+        owner: 'Yannis175',
+        admin: 'Yannis175',
+        id: md5(&lt;%= theme.gitalk.ID %&gt;),,
+        labels: 'Gitalk'.split(',').filter(l => l),
+        perPage: 10,
+        pagerDirection: 'last',
+        createIssueManually: true,
+        distractionFreeMode: false
+      })
+      gitalk.render('gitalk-container')
+</script>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© Yannis | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a>
+            <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<span class="site-uv">
+    总访客量:
+    <i class="busuanzi-value" id="busuanzi_value_site_uv"></i>
+</span>&nbsp;
+
+
+<span class="site-pv">
+    总访问量:
+    <i class="busuanzi-value" id="busuanzi_value_site_pv"></i>
+</span>
+
+          </span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>

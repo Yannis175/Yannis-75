@@ -14,7 +14,7 @@
 
 
 
-<title>高数 第八章 summary | Yannis&#39;s Blog.</title>
+<title>Java 关键字和对象 | Yannis&#39;s Blog.</title>
 
 
 
@@ -176,7 +176,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">高数 第八章 summary</h1>
+            <h1 class="post-title">Java 关键字和对象</h1>
             
                 <div class="post-meta">
                     
@@ -185,14 +185,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 27, 2020&nbsp;&nbsp;10:45:27</a>
+                        Date: <a href="#">March 12, 2020&nbsp;&nbsp;13:07:52</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
+                                <a href="/categories/Java/">Java</a>
                             
                         </span>
                     
@@ -201,17 +201,57 @@
         </header>
 
         <div class="post-content">
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这个学期老师的ppt每章后面都有一个小的summary，包括本章知识点和重点，</p>
-<p>我jio得N :heavy_multiplication_x:  Small summary = Big summary:thinking:也不无道理叭，于是乎，这样日积月累，这篇博客就变成我的高数期末复习资料了！:smirk:</p>
-<h3 id="高等数学-第八章-向量代数与空间解析几何"><a href="#高等数学-第八章-向量代数与空间解析几何" class="headerlink" title="高等数学 第八章 向量代数与空间解析几何"></a>高等数学 第八章 向量代数与空间解析几何</h3><h4 id="8-1-向量及其线性运算"><a href="#8-1-向量及其线性运算" class="headerlink" title="8.1 向量及其线性运算"></a>8.1 向量及其线性运算</h4><p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200227104439.png" alt="8.1"></p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200227104444.png" alt="8.1"></p>
-<h4 id="8-2数量积的定义和性质"><a href="#8-2数量积的定义和性质" class="headerlink" title="8.2数量积的定义和性质"></a>8.2数量积的定义和性质</h4><p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200228235312.jpg" alt="8.2"> </p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202002282353121.jpg" alt="8.2">   </p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202002282353122.jpg" alt="思考题"></p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202002282353123.jpg" alt="思考题答案"></p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202002282353124.jpg" alt="思考题答案">   </p>
-<hr>
-<p>未完待续……</p>
+            <h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>Java中的this用来<strong>指向自己的引用</strong>。</p>
+<h3 id="super"><a href="#super" class="headerlink" title="super"></a>super</h3><p>Java中用super来实现对父类成员的访问，用来引用当前对象的父类</p>
+<h3 id="static（存放在data-seg）"><a href="#static（存放在data-seg）" class="headerlink" title="static（存放在data seg）"></a>static（存放在data seg）</h3><ul>
+<li>在类中，用static声明的成员变量为静态成员变量，针对于某个成员变量</li>
+<li>用static声明的方法为静态方法，不能访问非static的成员（不能访问非静态成员）</li>
+<li>可以通过对象引用或类名访问静态成员</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//eg:</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> sid=<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><h3 id="package-和-import-语句"><a href="#package-和-import-语句" class="headerlink" title="package 和 import 语句"></a>package 和 import 语句</h3><p>Java引入包（package）机制，提供类的多重类命名空间，可以用来管理大型软件系统中数目较多的类，解决类的命名冲突问题。</p>
+<h4 id="命名格式"><a href="#命名格式" class="headerlink" title="命名格式"></a>命名格式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> pkg1.pkg2.pkg3...<span class="comment">// must 写在源代码第一行 !!!!!</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> class <span class="title">a</span><span class="params">()</span></span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">/*此包保存路径为 pkg1\pkg2\pkg3\a.java</span></span><br></pre></td></tr></table></figure>
+
+<p>确保类得class文件位于正确路径下</p>
+<h4 id="主要的包介绍"><a href="#主要的包介绍" class="headerlink" title="主要的包介绍"></a>主要的包介绍</h4><table>
+<thead>
+<tr>
+<th></th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>java.lang</td>
+<td align="left">包含一些Java的核心类，eg:String、Math、Integer、System、Thread</td>
+</tr>
+<tr>
+<td>java.awt</td>
+<td align="left">包含构成抽象窗口工具集</td>
+</tr>
+<tr>
+<td>java.applet</td>
+<td align="left">包含applet运行所需的一些类</td>
+</tr>
+<tr>
+<td>java.net</td>
+<td align="left">包含执行与网络相关操作的类</td>
+</tr>
+<tr>
+<td>java.io</td>
+<td align="left">包含能提供多种输入和输出功能的类</td>
+</tr>
+<tr>
+<td>java.util</td>
+<td align="left">包含一些二实用工具，eg:定义系统特性、使用与日期日历相关的函数。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>如果将一个类放入一个包中，在该类得源文件第一句写package</li>
+<li>执行一个类需要写全包名</li>
+</ul>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips:"></a>Tips:</h2><p>类名.  都为静态</p>
+<p>字符串常量分配在data seg</p>
 
         </div>
 
@@ -226,7 +266,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2020/02/27/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A68.1/">http://yoursite.com/2020/02/27/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A68.1/</a></span>
+                        <span><a href="http://yoursite.com/2020/03/12/Java%E5%85%B3%E9%94%AE%E5%AD%97/">http://yoursite.com/2020/03/12/Java%E5%85%B3%E9%94%AE%E5%AD%97/</a></span>
                     </p>
                 
                 
@@ -252,7 +292,9 @@
                     
                         <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"># 学习笔记</a>
                     
-                        <a href="/tags/%E9%AB%98%E6%95%B0/"># 高数</a>
+                        <a href="/tags/%E5%A4%A7%E4%B8%80/"># 大一</a>
+                    
+                        <a href="/tags/Java/"># Java</a>
                     
                         
                 </span>
@@ -265,10 +307,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/27/Java%E7%AC%AC%E4%B8%89%E7%AB%A0/">Java 第三章 Java类基础知识</a>
+                <a class="prev" rel="prev" href="/2020/03/17/Java%E7%BB%A7%E6%89%BF/">Java 继承和访问控制</a>
             
             
-            <a class="next" rel="next" href="/2020/02/25/Java%E7%AC%AC%E4%B8%80%E3%80%81%E4%BA%8C%E7%AB%A0/">Java 第一章&第二章</a>
+            <a class="next" rel="next" href="/2020/03/04/Python%E7%A8%8B%E5%BA%8F%E5%AE%9E%E4%BE%8B%E8%A7%A3%E6%9E%90/">Python 程序实例解析</a>
             
         </section>
 

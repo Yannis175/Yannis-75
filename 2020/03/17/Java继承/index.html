@@ -14,7 +14,7 @@
 
 
 
-<title>高数 第八章 summary | Yannis&#39;s Blog.</title>
+<title>Java 继承和访问控制 | Yannis&#39;s Blog.</title>
 
 
 
@@ -176,7 +176,7 @@
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">高数 第八章 summary</h1>
+            <h1 class="post-title">Java 继承和访问控制</h1>
             
                 <div class="post-meta">
                     
@@ -185,14 +185,14 @@
 
                     
                         <span class="post-time">
-                        Date: <a href="#">February 27, 2020&nbsp;&nbsp;10:45:27</a>
+                        Date: <a href="#">March 17, 2020&nbsp;&nbsp;12:58:40</a>
                         </span>
                     
                     
                         <span class="post-category">
                     Category:
                             
-                                <a href="/categories/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A6/">高等数学</a>
+                                <a href="/categories/Java/">Java</a>
                             
                         </span>
                     
@@ -201,17 +201,67 @@
         </header>
 
         <div class="post-content">
-            <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>这个学期老师的ppt每章后面都有一个小的summary，包括本章知识点和重点，</p>
-<p>我jio得N :heavy_multiplication_x:  Small summary = Big summary:thinking:也不无道理叭，于是乎，这样日积月累，这篇博客就变成我的高数期末复习资料了！:smirk:</p>
-<h3 id="高等数学-第八章-向量代数与空间解析几何"><a href="#高等数学-第八章-向量代数与空间解析几何" class="headerlink" title="高等数学 第八章 向量代数与空间解析几何"></a>高等数学 第八章 向量代数与空间解析几何</h3><h4 id="8-1-向量及其线性运算"><a href="#8-1-向量及其线性运算" class="headerlink" title="8.1 向量及其线性运算"></a>8.1 向量及其线性运算</h4><p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200227104439.png" alt="8.1"></p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200227104444.png" alt="8.1"></p>
-<h4 id="8-2数量积的定义和性质"><a href="#8-2数量积的定义和性质" class="headerlink" title="8.2数量积的定义和性质"></a>8.2数量积的定义和性质</h4><p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20200228235312.jpg" alt="8.2"> </p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202002282353121.jpg" alt="8.2">   </p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202002282353122.jpg" alt="思考题"></p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202002282353123.jpg" alt="思考题答案"></p>
-<p><img src="/img/postimg/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_202002282353124.jpg" alt="思考题答案">   </p>
-<hr>
-<p>未完待续……</p>
+            <h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><ul>
+<li><p>XX 是 XX</p>
+</li>
+<li><p>通过继承，子类自动拥有了基类（superclass）的所有成员变量和方法。</p>
+</li>
+<li><p>一个子类只能有一个基类</p>
+</li>
+<li><p>一个基类可以派生出多个子类</p>
+</li>
+<li><p>语法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 父类 </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> 子类 <span class="keyword">extends</span> 父类 </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>子类包含父类（子类》父类）</p>
+</li>
+</ul>
+<h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><p>权限修饰符 public protected private 置于类的成员定义前，用来限定其他对象对该类对象成员的访问权限。</p>
+<table>
+<thead>
+<tr>
+<th>修饰符</th>
+<th>类内部</th>
+<th>同一个包</th>
+<th>子类</th>
+<th>任何地方</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>private</td>
+<td>√</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>default</td>
+<td>√</td>
+<td><strong>√</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>protected</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td></td>
+</tr>
+<tr>
+<td>public</td>
+<td>√</td>
+<td>√</td>
+<td>√</td>
+<td><strong>√</strong></td>
+</tr>
+</tbody></table>
+<p>对class的权限修饰符只能使用<strong>public 和 default</strong> !!!</p>
+<h2 id="方法的重写"><a href="#方法的重写" class="headerlink" title="方法的重写"></a>方法的重写</h2><ul>
+<li>子类中可以根据需要对基类中继承来饿方法重写</li>
+<li>重写方法必须和被重写方法具有相同的方法名称、参数列表、返回类型</li>
+<li>重写方法不饿能使用比被重写方法更严格的访问权限</li>
+</ul>
 
         </div>
 
@@ -226,7 +276,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2020/02/27/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A68.1/">http://yoursite.com/2020/02/27/%E9%AB%98%E7%AD%89%E6%95%B0%E5%AD%A68.1/</a></span>
+                        <span><a href="http://yoursite.com/2020/03/17/Java%E7%BB%A7%E6%89%BF/">http://yoursite.com/2020/03/17/Java%E7%BB%A7%E6%89%BF/</a></span>
                     </p>
                 
                 
@@ -252,7 +302,9 @@
                     
                         <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"># 学习笔记</a>
                     
-                        <a href="/tags/%E9%AB%98%E6%95%B0/"># 高数</a>
+                        <a href="/tags/%E5%A4%A7%E4%B8%80/"># 大一</a>
+                    
+                        <a href="/tags/Java/"># Java</a>
                     
                         
                 </span>
@@ -265,10 +317,10 @@
         </section>
         <section class="post-nav">
             
-                <a class="prev" rel="prev" href="/2020/02/27/Java%E7%AC%AC%E4%B8%89%E7%AB%A0/">Java 第三章 Java类基础知识</a>
+                <a class="prev" rel="prev" href="/2020/03/18/Python%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">Python 基本数据类型</a>
             
             
-            <a class="next" rel="next" href="/2020/02/25/Java%E7%AC%AC%E4%B8%80%E3%80%81%E4%BA%8C%E7%AB%A0/">Java 第一章&第二章</a>
+            <a class="next" rel="next" href="/2020/03/12/Java%E5%85%B3%E9%94%AE%E5%AD%97/">Java 关键字和对象</a>
             
         </section>
 
